@@ -6,6 +6,7 @@ const join = (arr) => arr.join('');
 
 const compose =
   (...functions) =>
+  //// not-efficient, but more easy to understand
   // (arg) => {
   //   console.log({ arg, functions });
 
@@ -15,6 +16,7 @@ const compose =
   //   });
   //   return result;
   // };
+  //// more efficient way
   (arg) =>
     functions.reduceRight((acc, func) => func(acc), arg);
 
