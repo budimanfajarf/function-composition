@@ -8,6 +8,12 @@ const compose =
   (...functions) =>
   (arg) => {
     console.log({ arg, functions });
+
+    let result = arg;
+    functions.reverse().forEach((func) => {
+      result = func(result);
+    });
+    return result;
   };
 
 const value = compose(join, reverse, split)('hello');
