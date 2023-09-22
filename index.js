@@ -2,7 +2,10 @@ const split = (str) => str.split('');
 
 const reverse = (arr) => arr.reverse();
 
-const join = (arr) => arr.join('');
+const join =
+  (separator = '') =>
+  (arr) =>
+    arr.join(separator);
 
 const compose =
   (...functions) =>
@@ -20,6 +23,7 @@ const compose =
   (arg) =>
     functions.reduceRight((acc, func) => func(acc), arg);
 
-const value = compose(join, reverse, split)('hello');
+const value1 = compose(join(), reverse, split)('hello');
+const value2 = compose(join('-'), reverse, split)('hello');
 
-console.log(value);
+console.log({ value1, value2 });
